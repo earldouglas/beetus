@@ -213,12 +213,14 @@
         var bloodGlucoseRatioValue =
           bloodGlucoseRatio.value || bloodGlucoseRatio.placeholder;
 
-        var carbsCorrection = carbsValue / carbsRatioValue;
-        carbsUnits.innerHTML = Math.max(0, carbsCorrection.toFixed(2));
+        var carbsCorrection =
+          Math.max(0, (carbsValue / carbsRatioValue).toFixed(2));
+        carbsUnits.innerHTML = carbsCorrection;
 
         var bloodGlucoseCorrection =
-          (bloodGlucoseValue - bloodGlucoseOffsetValue) / bloodGlucoseRatioValue;
-        bloodGlucoseUnits.innerHTML = Math.max(0, bloodGlucoseCorrection.toFixed(2));
+          Math.max(0, ((bloodGlucoseValue - bloodGlucoseOffsetValue) / bloodGlucoseRatioValue).toFixed(2));
+        bloodGlucoseUnits.innerHTML =
+          bloodGlucoseCorrection;
 
         var totalCorrection = round(bloodGlucoseCorrection + carbsCorrection);
         total.innerHTML = totalCorrection;
