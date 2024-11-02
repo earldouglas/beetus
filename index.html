@@ -131,7 +131,12 @@
     </div>
 
     <script>
-      function round(sum) {
+
+      function roundComponent(x) {
+        return Math.max(0, x.toFixed(2));
+      }
+
+      function roundTotal(sum) {
         var whole = Math.trunc(sum);
         var remainder = sum - whole;
 
@@ -213,16 +218,13 @@
         var bloodGlucoseRatioValue =
           bloodGlucoseRatio.value || bloodGlucoseRatio.placeholder;
 
-        var carbsCorrection =
-          Math.max(0, (carbsValue / carbsRatioValue).toFixed(2));
+        var carbsCorrection = roundComponent(carbsValue / carbsRatioValue);
         carbsUnits.innerHTML = carbsCorrection;
 
-        var bloodGlucoseCorrection =
-          Math.max(0, ((bloodGlucoseValue - bloodGlucoseOffsetValue) / bloodGlucoseRatioValue).toFixed(2));
-        bloodGlucoseUnits.innerHTML =
-          bloodGlucoseCorrection;
+        var bloodGlucoseCorrection = roundComponent((bloodGlucoseValue - bloodGlucoseOffsetValue) / bloodGlucoseRatioValue);
+        bloodGlucoseUnits.innerHTML = bloodGlucoseCorrection;
 
-        var totalCorrection = round(bloodGlucoseCorrection + carbsCorrection);
+        var totalCorrection = roundTotal(bloodGlucoseCorrection + carbsCorrection);
         total.innerHTML = totalCorrection;
 
         var clipboardData = [
