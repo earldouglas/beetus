@@ -235,13 +235,14 @@
           `blood sugar offset: ${bloodGlucoseOffsetValue}`,
           `blood sugar ratio: ${bloodGlucoseRatioValue}`,
           `---`,
+          `calculated on: ${calculatedDateAndTime.date}`,
+          `calculated at: ${calculatedDateAndTime.time}`,
+          `---`,
           `blood sugar: ${bloodGlucoseValue}`,
           `carbs: ${carbsValue}`,
           `insulin for carbs: ${carbsCorrection}`,
           `insulin for blood sugar: ${bloodGlucoseCorrection}`,
           `total insulin dose: ${totalCorrection}`,
-          `calculated on: ${calculatedDateAndTime.date}`,
-          `calculated at: ${calculatedDateAndTime.time}`,
         ];
 
         document.getElementById('copy').onclick =
