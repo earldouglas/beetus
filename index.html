@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       body {
-        padding: 1em 2ex;
+        padding: 2em 4ex;
         font-size: 16pt;
         max-width: 42ex;
         margin: 0 auto;
@@ -22,7 +22,16 @@
       }
       hr {
         margin: 1em auto;
-        border-color: #ccc;
+        border: 1px solid #ddd;
+      }
+      td {
+        padding-left: 0.5ex;
+        white-space: nowrap;
+      }
+      tr.total td {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -45,6 +54,16 @@
       <hr>
 
       <table align="center">
+
+        <tr>
+          <td align="right">
+            <label for="g">Blood sugar:</label>
+          </td>
+          <td>
+            <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
+          </td>
+        </tr>
+
         <tr>
           <td align="right">
             <label for="c">Carbs:</label>
@@ -53,39 +72,14 @@
             <input type="number" placeholder="0" id="carbs" name="carbs" />
           </td>
         </tr>
-        <tr>
-          <td align="right">
-            <label for="g">Blood glucose:</label>
-          </td>
-          <td>
-            <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
-          </td>
-        </tr>
+
       </table>
     </form>
 
     <hr>
 
     <table align="center">
-      <tr>
-        <td align="right">
-          Date calculated:
-        </td>
-        <td>
-          <span id="date"></span>
-        </td>
-      </tr>
-      <tr>
-        <td align="right">
-          Time calculated:
-        </td>
-        <td>
-          <span id="time"></span>
-        </td>
-      </tr>
-      <tr height="20">
-        <td colspan="2"></td>
-      </tr>
+
       <tr>
         <td align="right">
           Insulin for carbs:
@@ -94,6 +88,7 @@
           <span id="carbsUnits"></span> units
         </td>
       </tr>
+
       <tr>
         <td align="right">
           Insulin for blood sugar:
@@ -102,16 +97,35 @@
           <span id="bloodGlucoseUnits"></span> units
         </td>
       </tr>
+
+      <tr class="total">
+        <td align="right">
+          Total insulin dose:
+        </td>
+        <td>
+          <span id="total"></span> units
+        </td>
+      </tr>
+
+      <tr>
+        <td align="right">
+          Date calculated:
+        </td>
+        <td>
+          <span id="date"></span>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="right">
+          Time calculated:
+        </td>
+        <td>
+          <span id="time"></span>
+        </td>
+      </tr>
+      
     </table>
-
-    <hr>
-
-    <div class="row">
-      <b>
-        Total insulin dose:
-        <span id="total"></span> units
-      </b>
-    </div>
 
     <hr>
 
