@@ -237,7 +237,9 @@
           `---`,
           `calculated on: ${calculatedDateAndTime.date}`,
           `calculated at: ${calculatedDateAndTime.time}`,
+          `copied on: COPIED_ON`,
           `---`,
+          `copied at: COPIED_AT`,
           `blood sugar: ${bloodGlucoseValue}`,
           `carbs: ${carbsValue}`,
           `insulin for carbs: ${carbsCorrection}`,
@@ -250,14 +252,10 @@
 
             var copiedDateAndTime = getCurrentDateAndTime();
 
-            var dateAndTimeData = [
-              `copied on: ${copiedDateAndTime.date}`,
-              `copied at: ${copiedDateAndTime.time}`,
-            ];
-
             var dataToCopy =
               clipboardData
-                .concat(dateAndTimeData)
+                .map((x) => x.replaceAll("COPIED_ON", copiedDateAndTime.date))
+                .map((x) => x.replaceAll("COPIED_AT", copiedDateAndTime.time))
                 .map((x) => x + "\n");
 
             var type = "text/plain";
