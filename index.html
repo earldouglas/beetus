@@ -5,9 +5,11 @@
     <title>Brimley</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+      body, td, button {
+        font-size: 16pt;
+      }
       body {
         padding: 2em 4ex;
-        font-size: 16pt;
         max-width: 42ex;
         margin: 0 auto;
       }
@@ -15,6 +17,7 @@
         font-size: 16pt;
         font-family: monospace;
         width: 5ch;
+        text-align: right;
       }
       div.row {
         text-align: center;
@@ -24,8 +27,11 @@
         margin: 1em auto;
         border: 1px solid #ddd;
       }
+      input {
+        margin: 0.5em 0;
+      }
       td {
-        padding-left: 0.5ex;
+        padding: 0 0.5ex;
         white-space: nowrap;
       }
       tr.total td {
@@ -36,29 +42,40 @@
       span.nowrap {
         white-space: nowrap;
       }
+      ul {
+        list-style-type: none;
+      }
+      ul, li {
+        margin: 0;
+        padding: 0;
+      }
+      tt {
+        font-size: 14pt;
+      }
     </style>
   </head>
 
   <body>
 
     <form method="GET" onsubmit="function() { return false; }">
+      <div class="row">
+        1 unit for every:
+      </div>
       <ul>
         <li>
-          1 unit per
-          <input type="number" placeholder="19" id="carbsRatio" name="carbsRatio" />
-          carbs
-        </li>
-        <li>
-          1 unit per
           <span class="nowrap">
             <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
-            mg/dL
+            <tt>mg/dL</tt>
           </span>
           above
           <span class="nowrap">
             <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
-            mg/dL
+            <tt>mg/dL</tt>
           </span>
+        </li>
+        <li>
+          <input type="number" placeholder="19" id="carbsRatio" name="carbsRatio" />
+          <tt>g</tt> carbs
         </li>
       </ul>
 
@@ -72,6 +89,7 @@
           </td>
           <td>
             <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
+            <tt>mg/dL</tt>
           </td>
         </tr>
 
@@ -81,6 +99,7 @@
           </td>
           <td>
             <input type="number" placeholder="0" id="carbs" name="carbs" />
+            <tt>g</tt>
           </td>
         </tr>
 
