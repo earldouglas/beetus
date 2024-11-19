@@ -33,23 +33,34 @@
         padding-bottom: 0.5em;
         font-weight: bold;
       }
+      span.nowrap {
+        white-space: nowrap;
+      }
     </style>
   </head>
 
   <body>
 
     <form method="GET" onsubmit="function() { return false; }">
-      <div class="row">
-        1 unit for every
-        <input type="number" placeholder="17" id="carbsRatio" name="carbsRatio" />
-        carbs
-      </div>
-      <div class="row">
-        (blood sugar -
-        <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />)
-        / 
-        <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
-      </div>
+      <ul>
+        <li>
+          1 unit per
+          <input type="number" placeholder="19" id="carbsRatio" name="carbsRatio" />
+          carbs
+        </li>
+        <li>
+          1 unit per
+          <span class="nowrap">
+            <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
+            mg/dL
+          </span>
+          above
+          <span class="nowrap">
+            <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
+            mg/dL
+          </span>
+        </li>
+      </ul>
 
       <hr>
 
