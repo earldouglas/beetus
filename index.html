@@ -84,6 +84,10 @@
               <label for="isDaytime">daytime</label>
             </div>
             <div>
+              <input type="radio" class="mealtime" id="isAfternoonSnack" name="mealtime" value="afternoonSnack" checked="checked" />
+              <label for="isAfternoonSnack">afternoon snack</label>
+            </div>
+            <div>
               <input type="radio" class="mealtime" id="isDinner" name="mealtime" value="dinner" />
               <label for="isDinner">dinner</label>
             </div>
@@ -204,6 +208,7 @@
       var carbsRatio = document.getElementById("carbsRatio");
       var isBreakfast = document.getElementById("isBreakfast");
       var isDaytime = document.getElementById("isDaytime");
+      var isAfternoonSnack = document.getElementById("isAfternoonSnack");
       var isDinner = document.getElementById("isDinner");
 
       var bloodGlucose = document.getElementById("bloodGlucose");
@@ -324,31 +329,32 @@
           x.oninput = go;
       });
 
-      isBreakfast.onchange =
-        (x) => {
+      [
+        isBreakfast,
+        isDaytime,
+        isAfternoonSnack,
+        isDinner
+      ].forEach((x) => {
+        x.onchange = () => {
           var breakfastCarbsRatio = 20;
+          var afternoonSnackCarbsRatio = 30;
+          var dinnerCarbsRatio = 30;
+
           if (isBreakfast.checked) {
             carbsRatio.value = `${breakfastCarbsRatio}`
-          }
-          go();
-        };
-
-      isDaytime.onchange =
-        (x) => {
-          if (isDaytime.checked) {
+          } else if (isDaytime.checked) {
+            carbsRatio.value = '';
+          } else if (isAfternoonSnack.checked) {
+            carbsRatio.value = `${afternoonSnackCarbsRatio}`
+          } else if (isDinner.checked) {
+            carbsRatio.value = `${dinnerCarbsRatio}`
+          } else {
             carbsRatio.value = '';
           }
-          go();
-        };
 
-      isDinner.onchange =
-        (x) => {
-          var dinnerCarbsRatio = 30;
-          if (isDinner.checked) {
-            carbsRatio.value = `${dinnerCarbsRatio}`
-          }
           go();
         };
+      });
 
       carbsRatio.value = '';
       isBreakfast.checked = false;
