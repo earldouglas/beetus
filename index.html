@@ -17,7 +17,9 @@
         font-family: monospace;
         width: 5ch;
         text-align: right;
-        margin: 0.5em 0;
+      }
+      input {
+        margin: 0.25em 0;
       }
       div.row {
         text-align: center;
@@ -48,9 +50,6 @@
       tt {
         font-size: 11pt;
       }
-      input#isBreakfast {
-        margin-left: 2ex;
-      }
     </style>
   </head>
 
@@ -75,8 +74,20 @@
         <li>
           <input type="number" placeholder="28" id="carbsRatio" name="carbsRatio" />
           <label for="carbsRatio"><tt>g</tt> carbs</label>
-          <input type="checkbox" id="isBreakfast" name="isBreakfast" />
-          <label for="isBreakfast">breakfast</label>
+          <div>
+            <div>
+              <input type="radio" class="mealtime" id="isBreakfast" name="mealtime" value="breakfast" />
+              <label for="isBreakfast">breakfast</label>
+            </div>
+            <div>
+              <input type="radio" class="mealtime" id="isDaytime" name="mealtime" value="daytime" checked="checked" />
+              <label for="isDaytime">daytime</label>
+            </div>
+            <div>
+              <input type="radio" class="mealtime" id="isDinner" name="mealtime" value="dinner" />
+              <label for="isDinner">dinner</label>
+            </div>
+          </div>
         </li>
       </ul>
 
@@ -192,6 +203,8 @@
 
       var carbsRatio = document.getElementById("carbsRatio");
       var isBreakfast = document.getElementById("isBreakfast");
+      var isDaytime = document.getElementById("isDaytime");
+      var isDinner = document.getElementById("isDinner");
 
       var bloodGlucose = document.getElementById("bloodGlucose");
       var carbs = document.getElementById("carbs");
@@ -313,15 +326,29 @@
 
       isBreakfast.onchange =
         (x) => {
-          var breakfastCarbsRatio = 18;
+          var breakfastCarbsRatio = 20;
           if (isBreakfast.checked) {
             carbsRatio.value = `${breakfastCarbsRatio}`
-          } else {
+          }
+          go();
+        };
+
+      isDaytime.onchange =
+        (x) => {
+          if (isDaytime.checked) {
             carbsRatio.value = '';
           }
           go();
         };
 
+      isDinner.onchange =
+        (x) => {
+          var dinnerCarbsRatio = 30;
+          if (isDinner.checked) {
+            carbsRatio.value = `${dinnerCarbsRatio}`
+          }
+          go();
+        };
 
       carbsRatio.value = '';
       isBreakfast.checked = false;
@@ -329,6 +356,9 @@
       bloodGlucoseOffset.value = '';
       bloodGlucose.value = '';
       carbs.value = '';
+      isBreakfast.checked = false;
+      isDinner.checked = false;
+      isDaytime.checked = true;
 
       bloodGlucose.focus();
 
