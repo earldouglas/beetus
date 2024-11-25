@@ -13,10 +13,11 @@
         max-width: 42ex;
         margin: 0 auto;
       }
-      input {
+      input[type=number] {
         font-family: monospace;
         width: 5ch;
         text-align: right;
+        margin: 0.5em 0;
       }
       div.row {
         text-align: center;
@@ -25,9 +26,6 @@
       hr {
         margin: 1em auto;
         border: 1px solid #ddd;
-      }
-      input {
-        margin: 0.5em 0;
       }
       td {
         padding: 0 0.5ex;
@@ -50,6 +48,9 @@
       tt {
         font-size: 11pt;
       }
+      input#isBreakfast {
+        margin-left: 2ex;
+      }
     </style>
   </head>
 
@@ -63,17 +64,19 @@
         <li>
           <span class="nowrap">
             <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
-            <tt>mg/dL</tt>
+            <label for="bloodGlucoseRatio"><tt>mg/dL</tt></label>
           </span>
           above
           <span class="nowrap">
             <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
-            <tt>mg/dL</tt>
+            <label for="bloodGlucoseOffset"><tt>mg/dL</tt></label>
           </span>
         </li>
         <li>
           <input type="number" placeholder="28" id="carbsRatio" name="carbsRatio" />
-          <tt>g</tt> carbs
+          <label for="carbsRatio"><tt>g</tt> carbs</label>
+          <input type="checkbox" id="isBreakfast" name="isBreakfast" />
+          <label for="isBreakfast">breakfast</label>
         </li>
       </ul>
 
@@ -188,6 +191,7 @@
       var bloodGlucoseRatio = document.getElementById("bloodGlucoseRatio");
 
       var carbsRatio = document.getElementById("carbsRatio");
+      var isBreakfast = document.getElementById("isBreakfast");
 
       var bloodGlucose = document.getElementById("bloodGlucose");
       var carbs = document.getElementById("carbs");
@@ -307,7 +311,20 @@
           x.oninput = go;
       });
 
+      isBreakfast.onchange =
+        (x) => {
+          var breakfastCarbsRatio = 18;
+          if (isBreakfast.checked) {
+            carbsRatio.value = `${breakfastCarbsRatio}`
+          } else {
+            carbsRatio.value = '';
+          }
+          go();
+        };
+
+
       carbsRatio.value = '';
+      isBreakfast.checked = false;
       bloodGlucoseRatio.value = '';
       bloodGlucoseOffset.value = '';
       bloodGlucose.value = '';
