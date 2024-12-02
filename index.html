@@ -357,14 +357,21 @@
       });
 
       carbsRatio.value = '';
-      isBreakfast.checked = false;
       bloodGlucoseRatio.value = '';
       bloodGlucoseOffset.value = '';
       bloodGlucose.value = '';
       carbs.value = '';
-      isBreakfast.checked = false;
-      isDinner.checked = false;
-      isDaytime.checked = true;
+
+      var nowHours = (new Date()).getHours();
+      if (nowHours <= 9) {
+        isBreakfast.click();
+      } else if (nowHours <= 13) {
+        isDaytime.click();
+      } else if (nowHours <= 16) {
+        isAfternoonSnack.click();
+      } else {
+        isDinner.click();
+      }
 
       bloodGlucose.focus();
 
