@@ -21,9 +21,15 @@
       input {
         margin: 0.25em 0;
       }
+      div.left {
+        text-align: left;
+        margin-bottom: 0.5em;
+        white-space: nowrap;
+      }
       div.row {
         text-align: center;
         margin-bottom: 0.5em;
+        white-space: nowrap;
       }
       hr {
         margin: 1em auto;
@@ -41,12 +47,6 @@
       span.nowrap {
         white-space: nowrap;
       }
-      ul, li {
-        margin: 0;
-      }
-      li {
-        white-space: nowrap;
-      }
       tt {
         font-size: 11pt;
       }
@@ -57,10 +57,9 @@
 
     <form method="GET" onsubmit="function() { return false; }">
       <div class="row">
-        1 unit for every:
+        <em>1 unit for every:</em>
       </div>
-      <ul>
-        <li>
+      <div class="left">
           <span class="nowrap">
             <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
             <label for="bloodGlucoseRatio"><tt>mg/dL</tt></label>
@@ -70,30 +69,32 @@
             <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
             <label for="bloodGlucoseOffset"><tt>mg/dL</tt></label>
           </span>
-        </li>
-        <li>
+      </div>
+      <div class="row">
+        <em>and/or:</em>
+      </div>
+      <div class="left">
           <input type="number" placeholder="30" id="carbsRatio" name="carbsRatio" />
           <label for="carbsRatio"><tt>g</tt> carbs</label>
           <div>
             <div>
-              <input type="radio" id="isBreakfast" name="mealtime" value="breakfast" />
+              <input type="radio" id="isBreakfast" name="mealtime" value="20" />
               <label for="isBreakfast">breakfast</label>
             </div>
             <div>
-              <input type="radio" id="isLunch" name="mealtime" value="lunch" checked="checked" />
+              <input type="radio" id="isLunch" name="mealtime" value="30" />
               <label for="isLunch">lunch</label>
             </div>
             <div>
-              <input type="radio" id="isAfternoonSnack" name="mealtime" value="afternoonSnack" checked="checked" />
+              <input type="radio" id="isAfternoonSnack" name="mealtime" value="30" />
               <label for="isAfternoonSnack">afternoon snack</label>
             </div>
             <div>
-              <input type="radio" id="isDinner" name="mealtime" value="dinner" />
+              <input type="radio" id="isDinner" name="mealtime" value="30" />
               <label for="isDinner">dinner</label>
             </div>
           </div>
-        </li>
-      </ul>
+      </div>
 
       <hr>
 
@@ -336,18 +337,15 @@
         isDinner
       ].forEach((x) => {
         x.onchange = () => {
-          var breakfastCarbsRatio = 20;
-          var afternoonSnackCarbsRatio = 30;
-          var dinnerCarbsRatio = 30;
 
           if (isBreakfast.checked) {
-            carbsRatio.value = `${breakfastCarbsRatio}`
+            carbsRatio.value = `${isBreakfast.value}`
           } else if (isLunch.checked) {
-            carbsRatio.value = '';
+            carbsRatio.value = `${isLunch.value}`
           } else if (isAfternoonSnack.checked) {
-            carbsRatio.value = `${afternoonSnackCarbsRatio}`
+            carbsRatio.value = `${isAfternoonSnack.value}`
           } else if (isDinner.checked) {
-            carbsRatio.value = `${dinnerCarbsRatio}`
+            carbsRatio.value = `${isDinner.value}`
           } else {
             carbsRatio.value = '';
           }
