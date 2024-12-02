@@ -76,19 +76,19 @@
           <label for="carbsRatio"><tt>g</tt> carbs</label>
           <div>
             <div>
-              <input type="radio" class="mealtime" id="isBreakfast" name="mealtime" value="breakfast" />
+              <input type="radio" id="isBreakfast" name="mealtime" value="breakfast" />
               <label for="isBreakfast">breakfast</label>
             </div>
             <div>
-              <input type="radio" class="mealtime" id="isDaytime" name="mealtime" value="daytime" checked="checked" />
-              <label for="isDaytime">daytime</label>
+              <input type="radio" id="isLunch" name="mealtime" value="lunch" checked="checked" />
+              <label for="isLunch">lunch</label>
             </div>
             <div>
-              <input type="radio" class="mealtime" id="isAfternoonSnack" name="mealtime" value="afternoonSnack" checked="checked" />
+              <input type="radio" id="isAfternoonSnack" name="mealtime" value="afternoonSnack" checked="checked" />
               <label for="isAfternoonSnack">afternoon snack</label>
             </div>
             <div>
-              <input type="radio" class="mealtime" id="isDinner" name="mealtime" value="dinner" />
+              <input type="radio" id="isDinner" name="mealtime" value="dinner" />
               <label for="isDinner">dinner</label>
             </div>
           </div>
@@ -207,7 +207,7 @@
 
       var carbsRatio = document.getElementById("carbsRatio");
       var isBreakfast = document.getElementById("isBreakfast");
-      var isDaytime = document.getElementById("isDaytime");
+      var isLunch = document.getElementById("isLunch");
       var isAfternoonSnack = document.getElementById("isAfternoonSnack");
       var isDinner = document.getElementById("isDinner");
 
@@ -331,7 +331,7 @@
 
       [
         isBreakfast,
-        isDaytime,
+        isLunch,
         isAfternoonSnack,
         isDinner
       ].forEach((x) => {
@@ -342,7 +342,7 @@
 
           if (isBreakfast.checked) {
             carbsRatio.value = `${breakfastCarbsRatio}`
-          } else if (isDaytime.checked) {
+          } else if (isLunch.checked) {
             carbsRatio.value = '';
           } else if (isAfternoonSnack.checked) {
             carbsRatio.value = `${afternoonSnackCarbsRatio}`
@@ -366,7 +366,7 @@
       if (nowHours <= 9) {
         isBreakfast.click();
       } else if (nowHours <= 13) {
-        isDaytime.click();
+        isLunch.click();
       } else if (nowHours <= 16) {
         isAfternoonSnack.click();
       } else {
