@@ -50,6 +50,9 @@
       tt {
         font-size: 11pt;
       }
+      div#preamble {
+        display: inline-block;
+      }
     </style>
   </head>
 
@@ -57,43 +60,47 @@
 
     <form method="GET" onsubmit="function() { return false; }">
       <div class="row">
-        <em>1 unit for every:</em>
-      </div>
-      <div class="left">
-          <span class="nowrap">
-            <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
-            <label for="bloodGlucoseRatio"><tt>mg/dL</tt></label>
-          </span>
-          above
-          <span class="nowrap">
-            <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
-            <label for="bloodGlucoseOffset"><tt>mg/dL</tt></label>
-          </span>
-      </div>
-      <div class="row">
-        <em>and/or:</em>
-      </div>
-      <div class="left">
-          <input type="number" placeholder="30" id="carbsRatio" name="carbsRatio" />
-          <label for="carbsRatio"><tt>g</tt> carbs</label>
-          <div>
-            <div>
-              <input type="radio" id="isBreakfast" name="mealtime" value="20" />
-              <label for="isBreakfast">breakfast</label>
-            </div>
-            <div>
-              <input type="radio" id="isLunch" name="mealtime" value="30" />
-              <label for="isLunch">lunch</label>
-            </div>
-            <div>
-              <input type="radio" id="isAfternoonSnack" name="mealtime" value="30" />
-              <label for="isAfternoonSnack">afternoon snack</label>
-            </div>
-            <div>
-              <input type="radio" id="isDinner" name="mealtime" value="30" />
-              <label for="isDinner">dinner</label>
-            </div>
+        <div id="preamble">
+          <div class="row">
+            <em>1 unit for every:</em>
           </div>
+          <div class="left">
+              <span class="nowrap">
+                <input type="number" placeholder="110" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
+                <label for="bloodGlucoseRatio"><tt>mg/dL</tt></label>
+              </span>
+              above
+              <span class="nowrap">
+                <input type="number" placeholder="150" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
+                <label for="bloodGlucoseOffset"><tt>mg/dL</tt></label>
+              </span>
+          </div>
+          <div class="row">
+            <em>and/or:</em>
+          </div>
+          <div class="left">
+              <input type="number" placeholder="30" id="carbsRatio" name="carbsRatio" />
+              <label for="carbsRatio"><tt>g</tt> carbs</label>
+              <div>
+                <div>
+                  <input type="radio" id="isBreakfast" name="mealtime" value="20" />
+                  <label for="isBreakfast">breakfast</label>
+                </div>
+                <div>
+                  <input type="radio" id="isLunch" name="mealtime" value="30" />
+                  <label for="isLunch">lunch</label>
+                </div>
+                <div>
+                  <input type="radio" id="isAfternoonSnack" name="mealtime" value="30" />
+                  <label for="isAfternoonSnack">afternoon snack</label>
+                </div>
+                <div>
+                  <input type="radio" id="isDinner" name="mealtime" value="30" />
+                  <label for="isDinner">dinner</label>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
 
       <hr>
