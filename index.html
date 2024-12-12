@@ -79,23 +79,19 @@
             <em>and/or:</em>
           </div>
           <div class="left">
-              <input type="number" placeholder="30" id="carbsRatio" name="carbsRatio" />
+              <input type="number" placeholder="33" id="carbsRatio" name="carbsRatio" />
               <label for="carbsRatio"><tt>g</tt> carbs</label>
               <div>
                 <div>
-                  <input type="radio" id="isBreakfast" name="mealtime" value="22" />
+                  <input type="radio" id="isBreakfast" name="mealtime" value="23" />
                   <label for="isBreakfast">breakfast</label>
                 </div>
                 <div>
-                  <input type="radio" id="isLunch" name="mealtime" value="30" />
+                  <input type="radio" id="isLunch" name="mealtime" value="33" />
                   <label for="isLunch">lunch</label>
                 </div>
                 <div>
-                  <input type="radio" id="isAfternoonSnack" name="mealtime" value="30" />
-                  <label for="isAfternoonSnack">afternoon snack</label>
-                </div>
-                <div>
-                  <input type="radio" id="isDinner" name="mealtime" value="30" />
+                  <input type="radio" id="isDinner" name="mealtime" value="33" />
                   <label for="isDinner">dinner</label>
                 </div>
               </div>
@@ -216,7 +212,6 @@
       var carbsRatio = document.getElementById("carbsRatio");
       var isBreakfast = document.getElementById("isBreakfast");
       var isLunch = document.getElementById("isLunch");
-      var isAfternoonSnack = document.getElementById("isAfternoonSnack");
       var isDinner = document.getElementById("isDinner");
 
       var bloodGlucose = document.getElementById("bloodGlucose");
@@ -340,7 +335,6 @@
       [
         isBreakfast,
         isLunch,
-        isAfternoonSnack,
         isDinner
       ].forEach((x) => {
         x.onchange = () => {
@@ -349,8 +343,6 @@
             carbsRatio.value = `${isBreakfast.value}`
           } else if (isLunch.checked) {
             carbsRatio.value = `${isLunch.value}`
-          } else if (isAfternoonSnack.checked) {
-            carbsRatio.value = `${isAfternoonSnack.value}`
           } else if (isDinner.checked) {
             carbsRatio.value = `${isDinner.value}`
           } else {
@@ -370,10 +362,8 @@
       var nowHours = (new Date()).getHours();
       if (nowHours <= 9) {
         isBreakfast.click();
-      } else if (nowHours <= 13) {
+      } else if (nowHours <= 15) {
         isLunch.click();
-      } else if (nowHours <= 16) {
-        isAfternoonSnack.click();
       } else {
         isDinner.click();
       }
