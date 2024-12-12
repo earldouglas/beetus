@@ -195,9 +195,9 @@
 
         var round;
 
-        if (remainder <= 0.2) {
+        if (remainder < 0.25) {
           round = 0;
-        } else if (remainder < 0.8) {
+        } else if (remainder < 0.75) {
           round = 0.5;
         } else {
           round = 1;
