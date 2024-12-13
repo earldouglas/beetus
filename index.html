@@ -362,10 +362,13 @@
       var nowHours = (new Date()).getHours();
       if (nowHours <= 9) {
         isBreakfast.click();
+        carbsRatio.value = `${isBreakfast.value}`
       } else if (nowHours <= 15) {
         isLunch.click();
+        carbsRatio.value = `${isLunch.value}`
       } else {
         isDinner.click();
+        carbsRatio.value = `${isDinner.value}`
       }
 
       bloodGlucose.focus();
