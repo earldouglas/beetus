@@ -2,129 +2,65 @@
 <html lang="en" dir="ltr">
 
   <head>
-    <title>Brimley</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body, td, input, button {
-        font-size: 14pt;
-      }
-      body {
-        padding: 2em 4ex;
-        max-width: 42ex;
-        margin: 0 auto;
-      }
-      input[type=number] {
-        font-family: monospace;
-        width: 5ch;
-        text-align: right;
-      }
-      input {
-        margin: 0.25em 0;
-      }
-      div.left {
-        text-align: left;
-        margin-bottom: 0.5em;
-        white-space: nowrap;
-      }
-      div.row {
-        text-align: center;
-        margin-bottom: 0.5em;
-        white-space: nowrap;
-      }
-      hr {
-        margin: 1em auto;
-        border: 1px solid #ddd;
-      }
-      td {
-        padding: 0 0.5ex;
-        white-space: nowrap;
-      }
-      tr.total td {
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        font-weight: bold;
-      }
-      span.nowrap {
-        white-space: nowrap;
-      }
-      tt {
-        font-size: 11pt;
-      }
-      div#preamble {
-        display: inline-block;
-      }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="pico.classless.min.v2.0.6.css">
+    <style type="text/css">
+      body { padding: .5em 2ex; }
     </style>
+    <title>Brimley</title>
   </head>
 
   <body>
 
-    <form method="GET" onsubmit="function() { return false; }">
-      <div class="row">
-        <div id="preamble">
-          <div class="row">
-            <em>1 unit for every:</em>
-          </div>
-          <div class="left">
-              <span class="nowrap">
-                <input type="number" placeholder="175" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
-                <label for="bloodGlucoseRatio"><tt>mg/dL</tt></label>
-              </span>
-              above
-              <span class="nowrap">
-                <input type="number" placeholder="120" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
-                <label for="bloodGlucoseOffset"><tt>mg/dL</tt></label>
-              </span>
-          </div>
-          <div class="row">
-            <em>and/or:</em>
-          </div>
-          <div class="left">
-              <input type="number" id="carbsRatio" name="carbsRatio" />
-              <label for="carbsRatio"><tt>g</tt> carbs</label>
-              <div>
-                <div>
-                  <input type="radio" id="isBreakfast" name="mealtime" value="28" />
-                  <label for="isBreakfast">breakfast</label>
-                </div>
-                <div>
-                  <input type="radio" id="isLunch" name="mealtime" value="43" />
-                  <label for="isLunch">lunch</label>
-                </div>
-                <div>
-                  <input type="radio" id="isDinner" name="mealtime" value="43" />
-                  <label for="isDinner">dinner</label>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
+    <label>
+      Blood glucose ratio:
+      <input type="number" placeholder="175" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
+    </label>
 
-      <hr>
+    <label>
+      Blood glucose target:
+      <input type="number" placeholder="120" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
+    </label>
 
-      <table align="center">
+    <fieldset>
 
-        <tr>
-          <td align="right">
-            <label for="bloodGlucose">Blood sugar:</label>
-          </td>
-          <td>
-            <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
-            <label for="bloodGlucose"><tt>mg/dL</tt></label>
-          </td>
-        </tr>
+      <label>
+        Carbs ratio:
+        <input type="number" id="carbsRatio" name="carbsRatio" />
+      </label>
 
-        <tr>
-          <td align="right">
-            <label for="carbs">Carbs:</label>
-          </td>
-          <td>
-            <input type="number" placeholder="0" id="carbs" name="carbs" />
-            <label for="carbs"><tt>g</tt></label>
-          </td>
-        </tr>
+      Mealtime:
 
-      </table>
-    </form>
+      <label>
+        <input type="radio" id="isBreakfast" name="mealtime" value="28" />
+        breakfast
+      </label>
+
+      <label>
+        <input type="radio" id="isLunch" name="mealtime" value="43" />
+        lunch
+      </label>
+
+      <label>
+        <input type="radio" id="isDinner" name="mealtime" value="43" />
+        dinner
+      </label>
+
+    </fieldset>
+
+    <hr>
+
+    <label>
+      Blood sugar:
+      <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
+    </label>
+
+    <label>
+      Carbs:
+      <input type="number" placeholder="0" id="carbs" name="carbs" />
+    </label>
 
     <hr>
 
@@ -148,12 +84,12 @@
         </td>
       </tr>
 
-      <tr class="total">
+      <tr>
         <td align="right">
-          Total insulin dose:
+          <b>Total insulin dose:</b>
         </td>
         <td>
-          <span id="total"></span> units
+          <b><span id="total"></span> units</b>
         </td>
       </tr>
 
@@ -177,203 +113,8 @@
       
     </table>
 
-    <hr>
+    <button id="copy">copy to clipboard</button>
 
-    <div class="row">
-      <button id="copy">copy to clipboard</button>
-    </div>
-
-    <script>
-
-      function roundComponent(x) {
-        return Math.max(0, x.toFixed(2));
-      }
-
-      function roundTotal(sum) {
-        var whole = Math.trunc(sum);
-        var remainder = sum - whole;
-
-        var round;
-
-        if (remainder < 0.25) {
-          round = 0;
-        } else if (remainder < 0.75) {
-          round = 0.5;
-        } else {
-          round = 1;
-        }
-
-        return Math.max(0, whole + round);
-      }
-
-      var bloodGlucoseOffset = document.getElementById("bloodGlucoseOffset");
-      var bloodGlucoseRatio = document.getElementById("bloodGlucoseRatio");
-
-      var carbsRatio = document.getElementById("carbsRatio");
-      var isBreakfast = document.getElementById("isBreakfast");
-      var isLunch = document.getElementById("isLunch");
-      var isDinner = document.getElementById("isDinner");
-
-      var bloodGlucose = document.getElementById("bloodGlucose");
-      var carbs = document.getElementById("carbs");
-
-      var dateElement = document.getElementById("date");
-      var timeElement = document.getElementById("time");
-      var carbsUnits = document.getElementById("carbsUnits");
-      var bloodGlucoseUnits = document.getElementById("bloodGlucoseUnits");
-      var total = document.getElementById("total");
-
-      function getCurrentDateAndTime() {
-
-        var now = new Date();
-
-        var theDate =
-          now.toLocaleString(
-            "en-us",
-            {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            }
-          );
-
-        var theTime =
-          now.toLocaleTimeString(
-            "en-us",
-            {
-              hour: "2-digit",
-              minute: "2-digit",
-            }
-          );
-
-        return {
-          date: theDate,
-          time: theTime,
-        };
-      }
-
-      function go() {
-
-        var calculatedDateAndTime = getCurrentDateAndTime();
-
-        dateElement.innerHTML = calculatedDateAndTime.date;
-        timeElement.innerHTML = calculatedDateAndTime.time;
-
-        var carbsRatioValue =
-          carbsRatio.value || carbsRatio.placeholder;
-
-        var carbsValue =
-          carbs.value || carbs.placeholder;
-
-        var bloodGlucoseValue =
-          bloodGlucose.value || bloodGlucose.placeholder;
-
-        var bloodGlucoseOffsetValue =
-          bloodGlucoseOffset.value || bloodGlucoseOffset.placeholder;
-
-        var bloodGlucoseRatioValue =
-          bloodGlucoseRatio.value || bloodGlucoseRatio.placeholder;
-
-        var carbsCorrection = roundComponent(carbsValue / carbsRatioValue);
-        carbsUnits.innerHTML = carbsCorrection;
-
-        var bloodGlucoseCorrection = roundComponent((bloodGlucoseValue - bloodGlucoseOffsetValue) / bloodGlucoseRatioValue);
-        bloodGlucoseUnits.innerHTML = bloodGlucoseCorrection;
-
-        var totalCorrection = roundTotal(bloodGlucoseCorrection + carbsCorrection);
-        total.innerHTML = totalCorrection;
-
-        var clipboardData = [
-          `carbs ratio: ${carbsRatioValue}`,
-          `blood sugar offset: ${bloodGlucoseOffsetValue}`,
-          `blood sugar ratio: ${bloodGlucoseRatioValue}`,
-          `---`,
-          `calculated on: ${calculatedDateAndTime.date}`,
-          `calculated at: ${calculatedDateAndTime.time}`,
-          `copied on: COPIED_ON`,
-          `---`,
-          `copied at: COPIED_AT`,
-          `blood sugar: ${bloodGlucoseValue}`,
-          `carbs: ${carbsValue}`,
-          `insulin for carbs: ${carbsCorrection}`,
-          `insulin for blood sugar: ${bloodGlucoseCorrection}`,
-          `total insulin dose: ${totalCorrection}`,
-        ];
-
-        document.getElementById('copy').onclick =
-          function () {
-
-            var copiedDateAndTime = getCurrentDateAndTime();
-
-            var dataToCopy =
-              clipboardData
-                .map((x) => x.replaceAll("COPIED_ON", copiedDateAndTime.date))
-                .map((x) => x.replaceAll("COPIED_AT", copiedDateAndTime.time))
-                .map((x) => x + "\n");
-
-            var type = "text/plain";
-            var blob = new Blob(dataToCopy, { type });
-            var data = [new ClipboardItem({ [type]: blob })];
-
-            navigator.clipboard.write(data);
-          };
-      }
-
-      [
-        carbsRatio,
-        bloodGlucoseOffset,
-        bloodGlucoseRatio,
-        carbs,
-        bloodGlucose
-      ].forEach((x) => {
-          x.onchange = go;
-          x.onkeypress = go;
-          x.onpaste = go;
-          x.oninput = go;
-      });
-
-      [
-        isBreakfast,
-        isLunch,
-        isDinner
-      ].forEach((x) => {
-        x.onchange = () => {
-
-          if (isBreakfast.checked) {
-            carbsRatio.value = `${isBreakfast.value}`
-          } else if (isLunch.checked) {
-            carbsRatio.value = `${isLunch.value}`
-          } else if (isDinner.checked) {
-            carbsRatio.value = `${isDinner.value}`
-          } else {
-            carbsRatio.value = '';
-          }
-
-          go();
-        };
-      });
-
-      carbsRatio.value = '';
-      bloodGlucoseRatio.value = '';
-      bloodGlucoseOffset.value = '';
-      bloodGlucose.value = '';
-      carbs.value = '';
-
-      var nowHours = (new Date()).getHours();
-      if (nowHours <= 9) {
-        isBreakfast.click();
-        carbsRatio.value = `${isBreakfast.value}`
-      } else if (nowHours <= 15) {
-        isLunch.click();
-        carbsRatio.value = `${isLunch.value}`
-      } else {
-        isDinner.click();
-        carbsRatio.value = `${isDinner.value}`
-      }
-
-      bloodGlucose.focus();
-
-      go();
-    </script>
+    <script src="brimley.js"></script>
   </body>
 </html>
