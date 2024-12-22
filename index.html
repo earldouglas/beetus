@@ -6,115 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="pico.classless.min.v2.0.6.css">
-    <style type="text/css">
-      body { padding: .5em 2ex; }
-    </style>
     <title>Brimley</title>
   </head>
 
   <body>
 
-    <label>
-      Blood glucose ratio:
-      <input type="number" placeholder="140" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
-    </label>
-
-    <label>
-      Blood glucose target:
-      <input type="number" placeholder="120" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
-    </label>
-
-    <fieldset>
+    <main>
 
       <label>
-        Carbs ratio:
-        <input type="number" id="carbsRatio" name="carbsRatio" />
-      </label>
-
-      Mealtime:
-
-      <label>
-        <input type="radio" id="isBreakfast" name="mealtime" value="22" />
-        breakfast
+        Blood glucose ratio:
+        <input type="number" placeholder="140" id="bloodGlucoseRatio" name="bloodGlucoseRatio" />
       </label>
 
       <label>
-        <input type="radio" id="isLunch" name="mealtime" value="34" />
-        lunch
+        Blood glucose target:
+        <input type="number" placeholder="120" id="bloodGlucoseOffset" name="bloodGlucoseOffset" />
+      </label>
+
+      <fieldset>
+
+        <label>
+          Carbs ratio:
+          <input type="number" id="carbsRatio" name="carbsRatio" />
+        </label>
+
+        Mealtime:
+
+        <label>
+          <input type="radio" id="isBreakfast" name="mealtime" value="22" />
+          breakfast
+        </label>
+
+        <label>
+          <input type="radio" id="isLunch" name="mealtime" value="34" />
+          lunch
+        </label>
+
+        <label>
+          <input type="radio" id="isDinner" name="mealtime" value="34" />
+          dinner
+        </label>
+
+      </fieldset>
+
+      <hr>
+
+      <label>
+        Blood sugar:
+        <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
       </label>
 
       <label>
-        <input type="radio" id="isDinner" name="mealtime" value="34" />
-        dinner
+        Carbs:
+        <input type="number" placeholder="0" id="carbs" name="carbs" />
       </label>
 
-    </fieldset>
+      <hr>
 
-    <hr>
+      <table align="center">
 
-    <label>
-      Blood sugar:
-      <input type="number" placeholder="0" id="bloodGlucose" name="bloodGlucose" />
-    </label>
+        <tr>
+          <td align="right">
+            Insulin for carbs:
+          </td>
+          <td>
+            <span id="carbsUnits"></span> units
+          </td>
+        </tr>
 
-    <label>
-      Carbs:
-      <input type="number" placeholder="0" id="carbs" name="carbs" />
-    </label>
+        <tr>
+          <td align="right">
+            Insulin for blood sugar:
+          </td>
+          <td>
+            <span id="bloodGlucoseUnits"></span> units
+          </td>
+        </tr>
 
-    <hr>
+        <tr>
+          <td align="right">
+            <b>Total insulin dose:</b>
+          </td>
+          <td>
+            <b><span id="total"></span> units</b>
+          </td>
+        </tr>
 
-    <table align="center">
+        <tr>
+          <td align="right">
+            Date calculated:
+          </td>
+          <td>
+            <span id="date"></span>
+          </td>
+        </tr>
 
-      <tr>
-        <td align="right">
-          Insulin for carbs:
-        </td>
-        <td>
-          <span id="carbsUnits"></span> units
-        </td>
-      </tr>
+        <tr>
+          <td align="right">
+            Time calculated:
+          </td>
+          <td>
+            <span id="time"></span>
+          </td>
+        </tr>
+        
+      </table>
 
-      <tr>
-        <td align="right">
-          Insulin for blood sugar:
-        </td>
-        <td>
-          <span id="bloodGlucoseUnits"></span> units
-        </td>
-      </tr>
+      <button id="copy">copy to clipboard</button>
 
-      <tr>
-        <td align="right">
-          <b>Total insulin dose:</b>
-        </td>
-        <td>
-          <b><span id="total"></span> units</b>
-        </td>
-      </tr>
+      <script src="brimley.js"></script>
 
-      <tr>
-        <td align="right">
-          Date calculated:
-        </td>
-        <td>
-          <span id="date"></span>
-        </td>
-      </tr>
+    </main>
 
-      <tr>
-        <td align="right">
-          Time calculated:
-        </td>
-        <td>
-          <span id="time"></span>
-        </td>
-      </tr>
-      
-    </table>
-
-    <button id="copy">copy to clipboard</button>
-
-    <script src="brimley.js"></script>
   </body>
 </html>
