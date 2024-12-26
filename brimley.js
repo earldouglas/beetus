@@ -143,7 +143,9 @@ const ui = {
       );
 
     const unroundedTotalCorrection =
-      input.keytoneMultiplier * subtotalCorrection;
+      library.roundToHundredths(
+        input.keytoneMultiplier * subtotalCorrection
+      );
 
     const totalCorrection =
       library.roundToNearestHalf(unroundedTotalCorrection);
