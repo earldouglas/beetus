@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
+      summary {
+        line-height: 3em;
+      }
+
       details, main {
+        border: 1px solid #ccf;
         margin: 0.5em 1ex;
+        padding: 0.5em 2ex;
         font-family: sans-serif;
         font-size: 14pt;
       }
@@ -17,15 +23,18 @@
         margin-top: 1.5em;
       }
 
+      details input, details select {
+        background-color: #eef;
+      }
+
+      main input, main select {
+        background-color: #ffb;
+      }
+
       input, select, button {
-        background-color: #ddf;
         padding: 0.75em 1.5ex;
         box-sizing: border-box;
         font-size: 12pt;
-      }
-
-      #bloodGlucose, #carbs {
-        background-color: #ff9;
       }
 
       label, input, select, button {
@@ -53,6 +62,7 @@
       }
 
       h2 {
+        margin-top: 1.5em;
         font-size: 18pt;
         white-space: nowrap;
         text-align: center;
@@ -78,33 +88,26 @@
         <label for="bloodGlucoseRatio">Blood glucose ratio (mg/dL):</label>
         <input type="number" id="bloodGlucoseRatio" />
 
-        <label>
-          Blood glucose target (mg/dL):
-          <input type="number" id="bloodGlucoseOffset" />
-        </label>
+        <label for="bloodGlucoseOffset">Blood glucose target (mg/dL):</label>
+        <input type="number" id="bloodGlucoseOffset" />
 
-        <label>
-        Mealtime:
-          <select id="mealtime">
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-          </select>
-        </label>
+        <label for="mealtime">Mealtime:</label>
+        <select id="mealtime">
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
 
-        <label>
-          Keytone level:
-          <select id="keytoneLevel">
-            <option value="negative">Negative</option>
-            <option value="trace">Trace</option>
-            <option value="small">Small</option>
-            <option value="moderate">Moderate</option>
-            <option value="large">Large</option>
-          </select>
-        </label>
+        <label for="keytoneLevel">Keytone level:</label>
+        <select id="keytoneLevel">
+          <option value="negative">Negative</option>
+          <option value="trace">Trace</option>
+          <option value="small">Small</option>
+          <option value="moderate">Moderate</option>
+          <option value="large">Large</option>
+        </select>
+
       </article>
-
-    <hr>
 
     </details>
 
@@ -120,15 +123,15 @@
         <input type="number" id="carbs" />
       </label>
 
-      <hr>
-
       <h2>
         Total dose:
         <span id="total"></span> units
       </h2>
 
-      <hr>
+    </main>
 
+    <details>
+      <summary>Details</summary>
       <h3>Blood glucose</h3>
 
       <table>
@@ -265,9 +268,9 @@
         <button id="copy">&#128203; Copy to clipboard</button>
       </div>
 
-      <script src="brimley.js"></script>
+    </details>
 
-    </main>
+    <script src="brimley.js"></script>
 
   </body>
 </html>
