@@ -1,5 +1,5 @@
 const initialConfiguration = {
-  bloodGlucoseRatio: 70,
+  bloodGlucoseRatio: 140,
   bloodGlucoseOffset: 120,
 
   breakfastCarbsRatio: 11,
