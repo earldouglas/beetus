@@ -202,9 +202,6 @@ const ui = {
     document.getElementById('carbsUnits').innerHTML =
       `${input.carbs} / ${input.carbsRatio} = ${calculation.carbsCorrection}`;
 
-    document.getElementById('subtotal').innerHTML =
-      `${calculation.subtotalCorrection}`;
-
     document.getElementById('unroundedTotal').innerHTML =
       `${calculation.subtotalCorrection} * ${input.keytoneMultiplier} = ${calculation.unroundedTotalCorrection}`;
 
