@@ -1,0 +1,80 @@
+body {
+  padding: 0;
+  max-width: 48ex;
+  margin: 0 auto;
+}
+
+summary {
+  line-height: 3em;
+}
+
+details {
+  border: 1px solid #ccf;
+  padding: 0em 1ex;
+}
+
+details, main {
+  margin: 0.5em 1ex;
+  font-family: sans-serif;
+  font-size: 14pt;
+}
+
+button {
+  text-align: center;
+  margin: 1em auto;
+  display: block;
+}
+
+label {
+  display: block;
+  margin: 1em 0;
+}
+
+input, select {
+  background-color: #ffb;
+}
+
+details input, details select {
+  background-color: #eef;
+}
+
+input, select, button {
+  padding: 0.75em 1.5ex;
+  box-sizing: border-box;
+  font-size: 12pt;
+}
+
+label, input, select {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  white-space: nowrap;
+  padding: 0.2em 0.4ex;
+}
+
+td {
+  width: 67%;
+}
+
+th {
+  text-align: right;
+  width: 33%;
+}
+
+hr {
+  margin: 1.5em 2ex;
+  border: 1px solid #ccf;
+}
+
+h2 {
+  margin: 1.5em 0;
+  font-size: 18pt;
+  white-space: nowrap;
+  text-align: center;
+}

@@ -4,90 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-
-      body {
-        padding: 0;
-        max-width: 48ex;
-        margin: 0 auto;
-      }
-
-      summary {
-        line-height: 3em;
-      }
-
-      details {
-        border: 1px solid #ccf;
-        padding: 0em 1ex;
-      }
-
-      details, main {
-        margin: 0.5em 1ex;
-        font-family: sans-serif;
-        font-size: 14pt;
-      }
-
-      button {
-        text-align: center;
-        margin: 1em auto;
-        display: block;
-      }
-
-      label {
-        display: block;
-        margin: 1em 0;
-      }
-
-      input, select {
-        background-color: #ffb;
-      }
-
-      details input, details select {
-        background-color: #eef;
-      }
-
-      input, select, button {
-        padding: 0.75em 1.5ex;
-        box-sizing: border-box;
-        font-size: 12pt;
-      }
-
-      label, input, select {
-        width: 100%;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      td, th {
-        white-space: nowrap;
-        padding: 0.2em 0.4ex;
-      }
-
-      td {
-        width: 67%;
-      }
-
-      th {
-        text-align: right;
-        width: 33%;
-      }
-
-      hr {
-        margin: 1.5em 2ex;
-        border: 1px solid #ccf;
-      }
-
-      h2 {
-        margin: 1.5em 0;
-        font-size: 18pt;
-        white-space: nowrap;
-        text-align: center;
-      }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
     <title>Brimley</title>
   </head>
 
@@ -99,26 +16,21 @@
         Current blood glucose (mg/dL):
         <input type="number" id="bloodGlucose" />
       </label>
-
       <label>
         Carbs to consume (g):
         <input type="number" id="carbs" />
       </label>
 
       <details>
-
         <summary>Target, ratios, keytones</summary>
-        
         <label>
           Blood glucose ratio (mg/dL):
           <input type="number" id="bloodGlucoseRatio" />
         </label>
-
         <label>
           Blood glucose target (mg/dL):
           <input type="number" id="bloodGlucoseOffset" />
         </label>
-
         <label>
           Mealtime bolus ratio:
           <select id="mealtime">
@@ -127,7 +39,6 @@
             <option value="dinner">Dinner</option>
           </select>
         </label>
-
         <label>
           Keytone level:
           <select id="keytoneLevel">
@@ -138,7 +49,6 @@
             <option value="large">Large</option>
           </select>
         </label>
-
       </details>
 
       <h2>
@@ -150,44 +60,28 @@
 
       <table>
         <tbody>
-
           <tr>
             <th>Correction:</th>
-            <td>
-              <span id="bloodGlucoseUnits"></span>
-            </td>
+            <td><span id="bloodGlucoseUnits"></span></td>
           </tr>
-
           <tr>
             <th>Bolus:</th>
-            <td>
-              <span id="carbsUnits"></span>
-            </td>
+            <td><span id="carbsUnits"></span></td>
           </tr>
-
           <tr>
             <th>Unrounded:</th>
-            <td>
-              <span id="unroundedTotal"></span>
-            </td>
+            <td><span id="unroundedTotal"></span></td>
           </tr>
-
           <tr>
             <th>Rounded:</th>
-            <td>
-              <span id="total2"></span>
-            </td>
+            <td><span id="total2"></span></td>
           </tr>
 
           <tr>
             <th>Time:</th>
-            <td>
-             <span id="time"></span>
-            </td>
+            <td><span id="time"></span></td>
           </tr>
-
         </tbody>
-
       </table>
 
       <hr>
@@ -195,8 +89,6 @@
       <button id="copy">&#128203; Copy to clipboard</button>
 
     </main>
-
     <script src="brimley.js"></script>
-
   </body>
 </html>
