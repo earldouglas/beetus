@@ -144,7 +144,7 @@ const ui = {
 
     const unroundedTotalCorrection =
       library.roundToHundredths(
-        input.keytoneMultiplier * subtotalCorrection
+        subtotalCorrection * input.keytoneMultiplier
       );
 
     const totalCorrection =
@@ -196,18 +196,18 @@ const ui = {
 
     document.getElementById('total').innerHTML = calculation.totalCorrection;
 
-    document.getElementById('bloodGlucoseRatio2').innerHTML = input.bloodGlucoseRatio;
-    document.getElementById('bloodGlucoseOffset2').innerHTML = input.bloodGlucoseOffset;
-    document.getElementById('bloodGlucose2').innerHTML = input.bloodGlucose;
-    document.getElementById('bloodGlucoseUnits').innerHTML = calculation.bloodGlucoseCorrection;
+    document.getElementById('bloodGlucoseUnits').innerHTML =
+      `(${input.bloodGlucose} - ${input.bloodGlucoseOffset}) / ${input.bloodGlucoseRatio} = ${calculation.bloodGlucoseCorrection}`;
 
-    document.getElementById('carbsRatio').innerHTML = `1:${input.carbsRatio} (${input.mealtime})`;
-    document.getElementById('carbs2').innerHTML = input.carbs;
-    document.getElementById('carbsUnits').innerHTML = calculation.carbsCorrection;
+    document.getElementById('carbsUnits').innerHTML =
+      `${input.carbs} / ${input.carbsRatio} = ${calculation.carbsCorrection}`;
 
-    document.getElementById('subtotal').innerHTML = calculation.subtotalCorrection;
-    document.getElementById('keytoneMultiplier').innerHTML = `${input.keytoneMultiplier}x (${input.keytoneLevel})`;
-    document.getElementById('unroundedTotal').innerHTML = calculation.unroundedTotalCorrection;
+    document.getElementById('subtotal').innerHTML =
+      `${calculation.subtotalCorrection}`;
+
+    document.getElementById('unroundedTotal').innerHTML =
+      `${calculation.subtotalCorrection} * ${input.keytoneMultiplier} = ${calculation.unroundedTotalCorrection}`;
+
     document.getElementById('total2').innerHTML = calculation.totalCorrection;
     document.getElementById('time').innerHTML = calculation.time;
 

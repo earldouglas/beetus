@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
       summary {
         line-height: 3em;
       }
 
-      details, main {
+      details {
         border: 1px solid #ccf;
-        margin: 1em 1ex;
-        padding: 0em 2ex;
+        padding: 0em 1ex;
+      }
+
+      details, main {
+        margin: 0.5em 1ex;
         font-family: sans-serif;
         font-size: 14pt;
       }
@@ -52,17 +60,18 @@
         border-collapse: collapse;
       }
 
+      td {
+        white-space: nowrap;
+        padding: 0.2em 0.4ex;
+      }
+
       td.label {
         text-align: right;
       }
 
-      td {
-        width: 50%;
-        white-space: nowrap;
-        padding: 0.25em 0.5ex;
-      }
-
-      tr:not(:last-child) td {
+      hr {
+        margin: 1.5em 2ex;
+        border: 1px solid #ccf;
       }
 
       h2 {
@@ -72,11 +81,6 @@
         text-align: center;
       }
 
-      h3 {
-        font-size: 16pt;
-        border-bottom: 1px solid #ccf;
-      }
-
     </style>
     <title>Brimley</title>
   </head>
@@ -84,39 +88,38 @@
   <body>
 
     <details>
+
       <summary>Target, ratios, keytones</summary>
       
-        <label>
-          Blood glucose ratio (mg/dL):
-          <input type="number" id="bloodGlucoseRatio" />
-        </label>
+      <label>
+        Blood glucose ratio (mg/dL):
+        <input type="number" id="bloodGlucoseRatio" />
+      </label>
 
-        <label>
-          Blood glucose target (mg/dL):
-          <input type="number" id="bloodGlucoseOffset" />
-        </label>
+      <label>
+        Blood glucose target (mg/dL):
+        <input type="number" id="bloodGlucoseOffset" />
+      </label>
 
-        <label>
-          Mealtime:
-          <select id="mealtime">
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-          </select>
-        </label>
+      <label>
+        Mealtime:
+        <select id="mealtime">
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </label>
 
-        <label>
-          Keytone level:
-          <select id="keytoneLevel">
-            <option value="negative">Negative</option>
-            <option value="trace">Trace</option>
-            <option value="small">Small</option>
-            <option value="moderate">Moderate</option>
-            <option value="large">Large</option>
-          </select>
-        </label>
-
-      </article>
+      <label>
+        Keytone level:
+        <select id="keytoneLevel">
+          <option value="negative">Negative</option>
+          <option value="trace">Trace</option>
+          <option value="small">Small</option>
+          <option value="moderate">Moderate</option>
+          <option value="large">Large</option>
+        </select>
+      </label>
 
     </details>
 
@@ -137,130 +140,17 @@
         <span id="total"></span> units
       </h2>
 
-      <button id="copy">&#128203; Copy to clipboard</button>
-
-    </main>
-
-    <details>
-      <summary>Details</summary>
-
-      <h3>Totals</h3>
+      <hr>
 
       <table>
         <tbody>
-
-          <tr>
-            <td class="label">
-              Subtotal:
-            </td>
-            <td>
-              <span id="subtotal"></span> units
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Keytone factor:
-            </td>
-            <td>
-              <span id="keytoneMultiplier"></span>
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Unrounded:
-            </td>
-            <td>
-              <span id="unroundedTotal"></span> units
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Rounded:
-            </td>
-            <td>
-              <span id="total2"></span> units
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Calculated at:
-            </td>
-            <td>
-             <span id="time"></span>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      <h3>Blood glucose</h3>
-
-      <table>
-        <tbody>
-
-          <tr>
-            <td class="label">
-              Ratio:
-            </td>
-            <td>
-              <span id="bloodGlucoseRatio2"></span> mg/dL
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Target:
-            </td>
-            <td>
-              <span id="bloodGlucoseOffset2"></span> mg/dL
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Reading:
-            </td>
-            <td>
-              <span id="bloodGlucose2"></span> mg/dL
-            </td>
-          </tr>
 
           <tr>
             <td class="label">
               Correction:
             </td>
             <td>
-              <span id="bloodGlucoseUnits"></span> units
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      <h3>Carbs</h3>
-
-      <table>
-        <tbody>
-
-          <tr>
-            <td class="label">
-              Ratio:
-            </td>
-            <td>
-              <span id="carbsRatio"></span>
-            </td>
-          </tr>
-
-          <tr>
-            <td class="label">
-              Carbs:
-            </td>
-            <td>
-              <span id="carbs2"></span> g
+              <span id="bloodGlucoseUnits"></span>
             </td>
           </tr>
 
@@ -269,14 +159,53 @@
               Bolus:
             </td>
             <td>
-              <span id="carbsUnits"></span> units
+              <span id="carbsUnits"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">
+              Subtotal:
+            </td>
+            <td>
+              <span id="subtotal"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">
+              Unrounded:
+            </td>
+            <td>
+              <span id="unroundedTotal"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">
+              Rounded:
+            </td>
+            <td>
+              <span id="total2"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">
+              Time:
+            </td>
+            <td>
+             <span id="time"></span>
             </td>
           </tr>
 
         </tbody>
+
       </table>
 
-    </details>
+      <button id="copy">&#128203; Copy to clipboard</button>
+
+    </main>
 
     <script src="brimley.js"></script>
 
