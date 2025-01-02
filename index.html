@@ -7,8 +7,9 @@
     <style>
 
       body {
-        margin: 0;
         padding: 0;
+        max-width: 48ex;
+        margin: 0 auto;
       }
 
       summary {
@@ -37,12 +38,12 @@
         margin: 1em 0;
       }
 
-      details input, details select {
-        background-color: #eef;
+      input, select {
+        background-color: #ffb;
       }
 
-      main input, main select {
-        background-color: #ffb;
+      details input, details select {
+        background-color: #eef;
       }
 
       input, select, button {
@@ -92,53 +93,53 @@
 
   <body>
 
-    <details>
-
-      <summary>Target, ratios, keytones</summary>
-      
-      <label>
-        Blood glucose ratio (mg/dL):
-        <input type="number" id="bloodGlucoseRatio" />
-      </label>
-
-      <label>
-        Blood glucose target (mg/dL):
-        <input type="number" id="bloodGlucoseOffset" />
-      </label>
-
-      <label>
-        Mealtime:
-        <select id="mealtime">
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-        </select>
-      </label>
-
-      <label>
-        Keytone level:
-        <select id="keytoneLevel">
-          <option value="negative">Negative</option>
-          <option value="trace">Trace</option>
-          <option value="small">Small</option>
-          <option value="moderate">Moderate</option>
-          <option value="large">Large</option>
-        </select>
-      </label>
-
-    </details>
-
     <main>
 
-     <label>
-        Blood glucose (mg/dL):
+      <label>
+        Current blood glucose (mg/dL):
         <input type="number" id="bloodGlucose" />
       </label>
 
       <label>
-        Carbs (g):
+        Carbs to consume (g):
         <input type="number" id="carbs" />
       </label>
+
+      <details>
+
+        <summary>Target, ratios, keytones</summary>
+        
+        <label>
+          Blood glucose ratio (mg/dL):
+          <input type="number" id="bloodGlucoseRatio" />
+        </label>
+
+        <label>
+          Blood glucose target (mg/dL):
+          <input type="number" id="bloodGlucoseOffset" />
+        </label>
+
+        <label>
+          Mealtime bolus ratio:
+          <select id="mealtime">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+          </select>
+        </label>
+
+        <label>
+          Keytone level:
+          <select id="keytoneLevel">
+            <option value="negative">Negative</option>
+            <option value="trace">Trace</option>
+            <option value="small">Small</option>
+            <option value="moderate">Moderate</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
+
+      </details>
 
       <h2>
         Total dose:
@@ -188,6 +189,8 @@
         </tbody>
 
       </table>
+
+      <hr>
 
       <button id="copy">&#128203; Copy to clipboard</button>
 
