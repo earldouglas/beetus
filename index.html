@@ -58,13 +58,16 @@
         border-collapse: collapse;
       }
 
-      td {
-        width: 100%;
+      td, th {
         white-space: nowrap;
         padding: 0.2em 0.4ex;
       }
 
-      td.label {
+      td {
+        width: 100%;
+      }
+
+      th {
         text-align: right;
         width: 0%;
       }
@@ -146,54 +149,42 @@
         <tbody>
 
           <tr>
-            <td class="label">
-              Correction:
-            </td>
+            <th>Correction:</th>
             <td>
               <span id="bloodGlucoseUnits"></span>
             </td>
           </tr>
 
           <tr>
-            <td class="label">
-              Bolus:
-            </td>
+            <th>Bolus:</th>
             <td>
               <span id="carbsUnits"></span>
             </td>
           </tr>
 
           <tr>
-            <td class="label">
-              Subtotal:
-            </td>
+            <th>Subtotal:</th>
             <td>
               <span id="subtotal"></span>
             </td>
           </tr>
 
           <tr>
-            <td class="label">
-              Unrounded:
-            </td>
+            <th>Unrounded:</th>
             <td>
               <span id="unroundedTotal"></span>
             </td>
           </tr>
 
           <tr>
-            <td class="label">
-              Rounded:
-            </td>
+            <th>Rounded:</th>
             <td>
               <span id="total2"></span>
             </td>
           </tr>
 
           <tr>
-            <td class="label">
-              Time:
-            </td>
+            <th>Time:</th>
             <td>
              <span id="time"></span>
             </td>
