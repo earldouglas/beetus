@@ -3,8 +3,8 @@ const initialConfiguration = {
   bloodGlucoseOffset: 120,
 
   breakfastCarbsRatio: 12,
-  lunchCarbsRatio: 18,
-  dinnerCarbsRatio: 18,
+  lunchCarbsRatio: 22,
+  dinnerCarbsRatio: 22,
 
   negativeKeytoneMultiplier: 1,
   traceKeytoneMultiplier: 1,
